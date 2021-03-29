@@ -24,9 +24,20 @@ public class Client extends User{
         super();
     }
 
-    public Client( String firstName, String lastName, int orders, Role role, String email, String password, String address, String phoneNumber) {
-        super( firstName, lastName, orders, role, email, password);
+    public Client( String firstName, String lastName, Role role, String email, String password, String address, String phoneNumber) {
+        super( firstName, lastName, role, email, password);
         this.address = address;
         this.phoneNumber = phoneNumber;
     }
+    @Override
+    public String toString(){
+        final StringBuilder sb = new StringBuilder();
+        sb.append(super.toString());
+        sb.append(this.address + "\n");
+        sb.append(this.phoneNumber + "\n\n");
+        return sb.toString();
+    }
+
+
+
 }

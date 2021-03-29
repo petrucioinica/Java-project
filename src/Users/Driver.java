@@ -24,9 +24,18 @@ public class Driver extends User{
         super();
     }
 
-    public Driver(String firstName, String lastName, int orders, Role role, String email, String password, double rating, String carNumber) {
-        super( firstName, lastName, orders, role, email, password);
-        this.rating = rating;
+    public Driver(String firstName, String lastName, Role role, String email, String password, String carNumber) {
+        super( firstName, lastName, role, email, password);
+        this.rating = 5.00;
         this.carNumber = carNumber;
     }
+    @Override
+    public String toString(){
+        final StringBuilder sb = new StringBuilder();
+        sb.append(super.toString());
+        sb.append(this.rating + "\n");
+        sb.append(this.carNumber + "\n\n");
+        return sb.toString();
+    }
+
 }

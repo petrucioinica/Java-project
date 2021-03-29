@@ -16,12 +16,12 @@ public class User {
 
     }
 
-    public User( String firstName, String lastName, int orders, Role role, String email, String password) {
+    public User( String firstName, String lastName, Role role, String email, String password) {
         this.id = count+1;
         setCount(count+1);
         this.firstName = firstName;
         this.lastName = lastName;
-        this.orders = orders;
+        this.orders = 0;
         this.role = role;
         this.email = email;
         this.password = password;
@@ -88,5 +88,14 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String toString(){
+        final StringBuilder sb = new StringBuilder();
+        sb.append(this.email + "\n");
+        sb.append(this.firstName + " " + this.lastName + "\n");
+        sb.append(this.role + "\n");
+        return sb.toString();
     }
 }

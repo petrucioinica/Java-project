@@ -2,7 +2,7 @@ package Orders;
 
 import Menus.Item;
 
-public class Payload {
+public class Payload implements Comparable<Payload>{
     private Item item;
     private int quantity;
 
@@ -29,6 +29,15 @@ public class Payload {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public int compareTo(Payload p){
+        if(this.item.getPrice() * this.quantity > p.item.getPrice() * p.quantity)
+            return 1;
+        if(this.item.getPrice() * this.quantity < p.item.getPrice() * p.quantity)
+            return -1;
+        return 0;
     }
 
 }

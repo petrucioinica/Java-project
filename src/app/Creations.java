@@ -37,9 +37,9 @@ public interface Creations {
         String lastName = input.nextLine();
         System.out.println("Password:");
         String password = input.nextLine();
-        System.out.println("Phone number:");
+        System.out.println("Car number:");
         String carNumber = input.nextLine();
-        return new Driver(firstName,lastName, Role.CLIENT, email,password,carNumber);
+        return new Driver(firstName,lastName, Role.DRIVER, email,password,carNumber);
     }
 
     default Item generateItem(){
@@ -77,7 +77,7 @@ public interface Creations {
         String address = input.nextLine();
         System.out.println("Menu items number:");
         Menu m = generateMenu(input.nextInt());
-        return new Restaurant(firstName,lastName, Role.CLIENT, email,password,name,address,m);
+        return new Restaurant(firstName,lastName, Role.RESTAURANT, email,password,name,address,m);
 
     }
 }

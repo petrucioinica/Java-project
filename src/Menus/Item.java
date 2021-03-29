@@ -1,17 +1,19 @@
 package Menus;
 
-public class Item {
+public class Item implements Comparable<Item>{
     private static int count = 0;
     private int id;
     private double price;
     private String name;
 
     public Item() {
-
+        this.id = count + 1;
+        setCount(count + 1);
     }
 
-    public Item(int id, double price, String name) {
-        this.id = id;
+    public Item( double price, String name) {
+        this.id = count + 1;
+        setCount(count + 1);
         this.price = price;
         this.name = name;
     }
@@ -48,4 +50,23 @@ public class Item {
         this.name = name;
     }
 
+    @Override
+    public String toString(){
+        final StringBuilder sb = new StringBuilder();
+        sb.append(this.name);
+        sb.append("\n");
+        sb.append("Price: ");
+        sb.append(this.price);
+        sb.append("\n");
+        return sb.toString();
+    }
+
+    @Override
+    public int compareTo(Item i){
+        if(this.price - i.price > 0)
+            return 1;
+        else if(this.price - i.price < 0)
+            return -1;
+        return 0;
+    }
 }

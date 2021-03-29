@@ -1,16 +1,16 @@
 package Orders;
 
-import java.util.Set;
+import java.util.HashSet;
 
 public class ShoppingCart {
     private int orderId;
-    private Set<Payload> items;
+    private HashSet<Payload> items;
 
     public int getOrderId() {
         return orderId;
     }
 
-    public Set<Payload> getItems() {
+    public HashSet<Payload> getItems() {
         return items;
     }
 
@@ -18,11 +18,11 @@ public class ShoppingCart {
         this.orderId = orderId;
     }
 
-    public void setItems(Set<Payload> items) {
+    public void setItems(HashSet<Payload> items) {
         this.items = items;
     }
 
-    public ShoppingCart(int orderId, Set<Payload> items) {
+    public ShoppingCart(int orderId, HashSet<Payload> items) {
         this.orderId = orderId;
         this.items = items;
     }

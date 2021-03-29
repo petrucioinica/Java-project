@@ -5,18 +5,18 @@ import Menus.Menu;
 public class Restaurant extends User{
         private String name;
         private String address;
-        private Double rating;
+        private double rating;
         private Menu menu;
 
         public Restaurant() {
-
+                super();
         }
 
-        public Restaurant(String firstName, String lastName, int orders, Role role, String email, String password, String name, String address, Double rating, Menu menu) {
-                super(firstName, lastName, orders, role, email, password);
+        public Restaurant(String firstName, String lastName, Role role, String email, String password, String name, String address, Menu menu) {
+                super(firstName, lastName, role, email, password);
                 this.name = name;
                 this.address = address;
-                this.rating = rating;
+                this.rating = 5.00;
                 this.menu = menu;
         }
 
@@ -28,7 +28,7 @@ public class Restaurant extends User{
                 return address;
         }
 
-        public Double getRating() {
+        public double getRating() {
                 return rating;
         }
 
@@ -44,11 +44,21 @@ public class Restaurant extends User{
                 this.address = address;
         }
 
-        public void setRating(Double rating) {
+        public void setRating(double rating) {
                 this.rating = rating;
         }
 
         public void setMenu(Menu menu) {
                 this.menu = menu;
+        }
+
+        @Override
+        public String toString(){
+                final StringBuilder sb = new StringBuilder();
+                sb.append(super.toString());
+                sb.append(this.name + "\n");
+                sb.append(this.address + "\n");
+                sb.append(this.rating + "\n\n");
+                return sb.toString();
         }
 }
