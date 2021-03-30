@@ -13,30 +13,29 @@ public class AppData implements Creations, Interrogations {
     private static ArrayList<Order> orders;
     private static AppData singleInstance = null;
 
-    private AppData()
-    {
+    private AppData() {
         System.out.println("We are creating empty users and orders");
         users = new ArrayList<User>();
         orders = new ArrayList<Order>();
     }
 
-    public static AppData appData(){
-        if(singleInstance == null){
+    public static AppData appData() {
+        if (singleInstance == null) {
             singleInstance = new AppData();
 
         }
         return singleInstance;
     }
 
-    public AppData getInstance(){
+    public AppData getInstance() {
         return singleInstance;
     }
 
-    public void end(){
+    public void end() {
         singleInstance = null;
     }
 
-    public void addUser(){
+    public void addUser() {
         System.out.println("Please input the role you want for this user:\n    1: Customer\n   2:Driver\n    3:Restaurant");
         Scanner input = new Scanner(System.in);
         try {
@@ -58,17 +57,17 @@ public class AppData implements Creations, Interrogations {
                 default:
                     throw new IOException("Bad input");
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("ERROR! Returning to actions menu");
         }
 
     }
 
-    public void getUsers(){
+    public void getUsers() {
         getAllUsers(users);
     }
 
-    public void getUsersFiltered(){
+    public void getUsersFiltered() {
         System.out.println("What role would you like to filter by?\n1: Client\n2: Driver\n3: Restaurant");
         Scanner input = new Scanner(System.in);
         try {
@@ -87,13 +86,20 @@ public class AppData implements Creations, Interrogations {
                     throw new IOException("Bad input");
             }
 
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("ERROR! Returning to actions menu");
-
         }
-
-
     }
 
+    public void addOrder(){
+        try {
+            orders.add(createOrder(users));
+        }catch (Exception e) {
+            System.out.println("ERROR! Returning to actions menu");
+        }
+    }
 
+    public void showAllOrders(){
+        getAllOrders(orders);
+    }
 }

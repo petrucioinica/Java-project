@@ -2,11 +2,15 @@ package app;
 
 import Menus.Item;
 import Menus.Menu;
-import Users.Client;
-import Users.Driver;
-import Users.Restaurant;
-import Users.Role;
+import Orders.Order;
+import Orders.Payload;
+import Orders.ShoppingCart;
+import Users.*;
 
+import java.lang.reflect.Array;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public interface Creations {
@@ -78,6 +82,78 @@ public interface Creations {
         System.out.println("Menu items number:");
         Menu m = generateMenu(input.nextInt());
         return new Restaurant(firstName,lastName, Role.RESTAURANT, email,password,name,address,m);
+    }
+
+    default Order createOrder(ArrayList<User> users){
+        System.out.println("Please select a client for the order (enter the number associated):");
+        Scanner input = new Scanner(System.in);
+        ArrayList<User> clients = new ArrayList<User>();
+        for (User user : users) {
+            if(user.getRole() == Role.CLIENT)
+                clients.add(user);
+        }
+        int i = 0;
+        for(User user : clients) {
+            System.out.println(i + ":\n" + user.toString());
+            i++;
+        }
+        int order = input.nextInt();
+        Client client = (Client) clients.get(order);
+
+
+        System.out.println("Please select a client for the order (enter the number associated):");
+        ArrayList<User> drivers = new ArrayList<User>();
+        for (User user : users) {
+            if(user.getRole() == Role.DRIVER)
+                drivers.add(user);
+        }
+         i = 0;
+        for(User user : drivers) {
+            System.out.println(i + ":\n" + user.toString());
+            i++;
+        }
+        order = input.nextInt();
+        Driver driver =(Driver) drivers.get(order);
+
+        System.out.println("Please select a restaurant for the order (enter the number associated):");
+        ArrayList<User> restaurants = new ArrayList<User>();
+        for (User user : users) {
+            if(user.getRole() == Role.RESTAURANT)
+                restaurants.add(user);
+        }
+        i = 0;
+        for(User user : restaurants) {
+            System.out.println(i + ":\n" + user.toString());
+            i++;
+        }
+        order = input.nextInt();
+        Restaurant restaurant = (Restaurant) restaurants.get(order);
+
+        Boolean isFinalized = false;
+        ShoppingCart shoppingCart = new ShoppingCart(new HashSet<>());
+        while(!isFinalized) {
+            System.out.println("Restaurant menu is: ");
+            i = 0;
+            for (Item item : restaurant.getMenu().getMenuItems()) {
+                System.out.println(i + ": " + item.toString());
+                i++;
+            }
+            System.out.println("-1: Finalize order");
+            order = input.nextInt();
+            if(order == -1)
+                isFinalized = true;
+            else{
+                System.out.println("Please type in quantity of said item.");
+                 int quantity = input.nextInt();
+                 shoppingCart.addPayload(new Payload(restaurant.getMenu().getMenuItems().get(order), quantity));
+            }
+        }
+
+        LocalDateTime dropoffTime =  LocalDateTime.now();
+        LocalDateTime pickupTime =  LocalDateTime.parse(dropoffTime.toString()).minusMinutes(30);
+
+
+        return  new Order(client,driver,restaurant,pickupTime,dropoffTime,shoppingCart);
 
     }
 }

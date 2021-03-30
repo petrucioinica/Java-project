@@ -1,13 +1,17 @@
 package Orders;
 
+import Users.Client;
+import Users.Driver;
+import Users.Restaurant;
+
 import java.time.LocalDateTime;
 
 public class Order {
     private static int count = 0;
     private int id;
-    private int clientId;
-    private int driverId;
-    private int restaurantId;
+    private Client client;
+    private Driver driver;
+    private Restaurant restaurant;
     private double orderPrice;
     private double fee;
     private LocalDateTime pickupTime;
@@ -15,23 +19,31 @@ public class Order {
     private OrderStatus status;
     private ShoppingCart boughtItems;
 
-    public Order(int clientId, int driverId, int restaurantId, double orderPrice, double fee, LocalDateTime pickupTime, LocalDateTime dropoffTime, OrderStatus status, ShoppingCart boughtItems) {
+    public Order(Client client, Driver driver, Restaurant restaurant,LocalDateTime pickupTime, LocalDateTime dropoffTime, ShoppingCart boughtItems) {
+        double totalPrice = 0;
+        for(Payload payload : boughtItems.getItems()){
+            double unitPrice = payload.getItem().getPrice();
+            totalPrice+=unitPrice * payload.getQuantity();
+        }
         this.id = count + 1;
         setCount(count + 1);
-        this.clientId = clientId;
-        this.driverId = driverId;
-        this.restaurantId = restaurantId;
-        this.orderPrice = orderPrice;
-        this.fee = fee;
+        this.client = client;
+        this.driver= driver;
+        this.restaurant = restaurant;
+        this.orderPrice = totalPrice;
+        this.fee = 0;
         this.pickupTime = pickupTime;
         this.dropoffTime = dropoffTime;
-        this.status = status;
+        this.status = OrderStatus.COMPLETED;
         this.boughtItems = boughtItems;
     }
 
     public Order() {
         this.id = count + 1;
         setCount(count + 1);
+        this.orderPrice = 0;
+        this.fee = 0;
+
 
     }
 
@@ -47,16 +59,16 @@ public class Order {
         return id;
     }
 
-    public int getClientId() {
-        return clientId;
+    public Client getClient() {
+        return client;
     }
 
-    public int getDriverId() {
-        return driverId;
+    public Driver getDriver() {
+        return driver;
     }
 
-    public int getRestaurantId() {
-        return restaurantId;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
     public double getOrderPrice() {
@@ -91,16 +103,16 @@ public class Order {
         this.id = id;
     }
 
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
-    public void setDriverId(int driverId) {
-        this.driverId = driverId;
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 
-    public void setRestaurantId(int restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public void setOrderPrice(double orderPrice) {
@@ -121,5 +133,23 @@ public class Order {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString(){
+        final StringBuilder sb = new StringBuilder();
+        sb.append(this.id + "\n");
+        sb.append("Restaurant: " + this.restaurant.getName() + "\n");
+        sb.append("Client: " + this.client.getFirstName() + " " + this.client.getLastName() + "\n");
+        sb.append("Driver: " + this.driver.getFirstName() + " " + this.driver.getLastName() + "\n");
+        sb.append("Pickup time: " + this.pickupTime.toString() + "\n");
+        sb.append("Dropoff time: " + this.dropoffTime.toString() + "\n");
+        sb.append("Order cost: " + this.orderPrice + "\nItems:");
+        for(Payload payload : this.boughtItems.getItems()){
+            sb.append(payload.getItem().getName() + " ... " + payload.getQuantity() + "pieces\n");
+        }
+        sb.append("\n");
+        return sb.toString();
+
     }
 }

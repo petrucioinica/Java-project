@@ -18,11 +18,13 @@ public class Main {
             System.out.println("MAIN MENU\n0: Exit app\n" +
                     "1: Add user\n" +
                     "2: Get all users\n" +
-                    "3: Get users by role\n");
+                    "3: Get users by role\n" +
+                    "4: Create order\n" +
+                    "5: Get all orders");
             System.out.println("Please enter one of the numbers associated to the above commands.");
             try{
                 int command = input.nextInt();
-                if(command < 0 || command > 3)
+                if(command < 0 || command > 5)
                     throw new IOException("Please enter a valid option.\n");
                 switch (command){
                     case 0:
@@ -38,6 +40,11 @@ public class Main {
                     case 3:
                         data.getUsersFiltered();
                         break;
+                    case 4:
+                        data.addOrder();
+                        break;
+                    case 5:
+                        data.showAllOrders();
                     default:
                         break;
                 }
@@ -53,11 +60,11 @@ public class Main {
         //list all users DONE
         //list users by role? DONE
         //add items to a restaurant menu DONE
-        //create an order
-        //add payloads to an order
-        //assign driver to an order
-        //end order
-        //view all orders
+        //create an order DONE
+        //add payloads to an order DONE
+        //assign driver to an order DONE
+        //end order maybe all three at the same spot DONE
+        //view all orders DONE
 
     }
 }

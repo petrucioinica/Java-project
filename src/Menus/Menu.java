@@ -1,21 +1,22 @@
 package Menus;
 
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Menu {
     private static int count = 0;
     private int id;
-    private TreeSet<Item> menuItems;
+    private ArrayList<Item> menuItems;
 
     public Menu() {
         this.id = count + 1;
         setCount(count + 1);
-        this.menuItems = new TreeSet<Item>();
+        this.menuItems = new ArrayList<Item>();
 
     }
 
-    public Menu(TreeSet<Item> menuItems) {
+    public Menu(ArrayList<Item> menuItems) {
         this.id = count + 1;
         setCount(count + 1);
         this.menuItems = menuItems;
@@ -30,7 +31,7 @@ public class Menu {
         return id;
     }
 
-    public Set<Item> getMenuItems() {
+    public ArrayList<Item> getMenuItems() {
         return menuItems;
     }
 
@@ -42,7 +43,7 @@ public class Menu {
         this.id = id;
     }
 
-    public void setMenuItems(TreeSet<Item> menuItems) {
+    public void setMenuItems(ArrayList<Item> menuItems) {
         this.menuItems = menuItems;
     }
 

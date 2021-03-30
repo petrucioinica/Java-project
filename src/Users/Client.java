@@ -34,7 +34,7 @@ public class Client extends User{
         final StringBuilder sb = new StringBuilder();
         sb.append(super.toString());
         sb.append(this.address + "\n");
-        sb.append(this.phoneNumber + "\n\n");
+        sb.append(this.phoneNumber + "\n");
         return sb.toString();
     }
 

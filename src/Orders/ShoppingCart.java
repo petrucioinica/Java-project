@@ -3,30 +3,24 @@ package Orders;
 import java.util.HashSet;
 
 public class ShoppingCart {
-    private int orderId;
-    private HashSet<Payload> items;
 
-    public int getOrderId() {
-        return orderId;
-    }
+    private HashSet<Payload> items;
 
     public HashSet<Payload> getItems() {
         return items;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
 
     public void setItems(HashSet<Payload> items) {
         this.items = items;
     }
 
-    public ShoppingCart(int orderId, HashSet<Payload> items) {
-        this.orderId = orderId;
+    public ShoppingCart( HashSet<Payload> items) {
         this.items = items;
     }
 
-    public ShoppingCart() {
+    public void addPayload(Payload p){
+        this.items.add(p);
     }
+
 }

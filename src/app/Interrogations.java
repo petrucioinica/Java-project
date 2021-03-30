@@ -1,11 +1,12 @@
 package app;
 
+import Orders.Order;
 import Users.Role;
 import Users.User;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
-import java.util.List;
+
 
 public interface Interrogations {
     default void getAllUsers(ArrayList<User> users){
@@ -22,8 +23,15 @@ public interface Interrogations {
             if(user.getRole() == role)
                 filteredUsers.add(user);
         }
-        for(User user : filteredUsers)
+        for(User user : filteredUsers) {
             System.out.println(user.toString());
 
+        }
+
+    }
+
+    default void getAllOrders(ArrayList<Order> orders){
+        for(Order order : orders)
+            System.out.println(order.toString() + "\n");
     }
 }
