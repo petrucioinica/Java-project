@@ -56,15 +56,5 @@ public class Main {
 
         }
 
-        //add user (role included) DONE
-        //list all users DONE
-        //list users by role? DONE
-        //add items to a restaurant menu DONE
-        //create an order DONE
-        //add payloads to an order DONE
-        //assign driver to an order DONE
-        //end order maybe all three at the same spot DONE
-        //view all orders DONE
-
     }
 }
