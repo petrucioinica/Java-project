@@ -1,6 +1,11 @@
 package app;
 
-import java.io.IOException;
+import Services.MenusService;
+import Services.OrdersService;
+import Services.ShoppingCartsService;
+import Services.UsersService;
+import Users.User;
+
 import java.util.Scanner;
 
 
@@ -10,10 +15,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        AppData data = AppData.appData();
+        UsersService usersService = new UsersService();
+        OrdersService ordersService = new OrdersService();
+        ShoppingCartsService shoppingCartsService = new ShoppingCartsService();
+        MenusService menusService = new MenusService();
+
+
         System.out.println("APP STARTED\nThe following commands are available:\n");
 
-        while(data.getInstance() != null){
+        boolean programStarted = true;
+        while(programStarted){
             Scanner input = new Scanner(System.in);
             System.out.println("MAIN MENU\n0: Exit app\n" +
                     "1: Add user\n" +
@@ -25,29 +36,32 @@ public class Main {
             try{
                 int command = input.nextInt();
                 if(command < 0 || command > 5)
-                    throw new IOException("Please enter a valid option.\n");
+                    throw new java.util.InputMismatchException();
                 switch (command){
                     case 0:
                         System.out.println("Exiting..\n");
-                        data.end();
+                        programStarted = false;
                         break;
                     case 1:
-                        data.addUser();
+                        usersService.addUser();
                         break;
                     case 2:
-                        data.getUsers();
+                        usersService.getAllUsers();
                         break;
                     case 3:
-                        data.getUsersFiltered();
+                        usersService.getUsersFiltered();
                         break;
                     case 4:
-                        data.addOrder();
+                        ordersService.addOrder();
                         break;
                     case 5:
-                        data.showAllOrders();
+                        ordersService.getAllOrders();
                     default:
                         break;
                 }
+            }
+            catch(java.util.InputMismatchException e){
+                System.out.println("Please select a valid option");
             }
             catch(Exception e){
                 System.out.println(e.toString());
