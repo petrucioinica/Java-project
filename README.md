@@ -5,7 +5,8 @@
   Pentru a vedea featurile proiectului trebuie rulata functia main din src/app/Main.
   Pentru alegerea optiunilor se va folosi input de la tastatura. Urmariti mesajele afisate.
  ### Implementare
-  Pentru implementarea proiectului am creat  pachete pentru useri, comenzi si meniuri pentru restaurante, cat si pachetul services care contine urmatoarele:
+  Pentru implementarea proiectului am creat  pachete pentru useri, comenzi si meniuri pentru restaurante, cat si pachetul services care contine urmatoarele:  
+  Markup :
     * AuditService - folosit pentru cerinta de audit
     * CsvReadingService - cu ajutorul acestui serviciu aplicatia isi incarca datele deja existente in fisierele .csv
     * CsvWritingService - cu ajutorul acestui serviciu se scriu date in fisierele .csv pe masura ce sunt prelucrate
