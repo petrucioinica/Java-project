@@ -15,7 +15,7 @@ public class ShoppingCartsService {
         int i;
         Scanner input = new Scanner(System.in);
         boolean isFinalized = false;
-        ShoppingCart shoppingCart = new ShoppingCart(new HashSet<>(), orderId);
+        ShoppingCart shoppingCart = new ShoppingCart(new ArrayList<>(), orderId);
         while (!isFinalized) {
             System.out.println("Restaurant menu is: ");
             i = 0;

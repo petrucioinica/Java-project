@@ -4,6 +4,7 @@ import Menus.Menu;
 import Users.*;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -149,5 +150,15 @@ public class UsersService {
         }
     }
 
+    public static void loadUsers() {
+        ArrayList<Client> clients = CsvReadingService.readClients();
+        ArrayList<Driver> drivers = CsvReadingService.readDrivers();
+        ArrayList<Restaurant> restaurants = CsvReadingService.readRestaurants();
+        ArrayList<User> readUsers = new ArrayList<>();
+        readUsers.addAll(clients);
+        readUsers.addAll(drivers);
+        readUsers.addAll(restaurants);
+        users = readUsers;
+    }
 
 }

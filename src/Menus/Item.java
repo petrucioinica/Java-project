@@ -20,6 +20,14 @@ public class Item implements Comparable<Item> {
         this.menuId = menuId;
     }
 
+    public Item(int id, double price, String name, int menuId) {
+        this.id = id;
+        setCount(count + 1);
+        this.price = price;
+        this.name = name;
+        this.menuId = menuId;
+    }
+
     public static int getCount() {
         return count;
     }

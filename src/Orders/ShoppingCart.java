@@ -1,18 +1,19 @@
 package Orders;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class ShoppingCart {
     private static int count = 0;
     private int id;
-    private HashSet<Payload> items;
+    private ArrayList<Payload> items;
     private int orderId;
 
-    public HashSet<Payload> getItems() {
+    public ArrayList<Payload> getItems() {
         return items;
     }
 
-    public void setItems(HashSet<Payload> items) {
+    public void setItems(ArrayList<Payload> items) {
         this.items = items;
     }
 
@@ -28,10 +29,18 @@ public class ShoppingCart {
         this.orderId = orderId;
     }
 
-    public ShoppingCart(HashSet<Payload> items, int orderId) {
+    public ShoppingCart(ArrayList<Payload> items, int orderId) {
         this.items = items;
         this.id = count + 1;
         setCount(count + 1);
+        this.orderId = orderId;
+    }
+
+    public ShoppingCart(int id, ArrayList<Payload> items, int orderId) {
+        this.items = items;
+        this.id = id;
+        setCount(count + 1);
+        this.orderId = orderId;
     }
 
     public static void setCount(int count) {

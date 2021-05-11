@@ -19,13 +19,15 @@ public class Order {
     private OrderStatus status;
     private ShoppingCart boughtItems;
 
-    public Order(Client client, Driver driver, Restaurant restaurant,LocalDateTime pickupTime, LocalDateTime dropoffTime, ShoppingCart boughtItems) {
+    public Order(int id, Client client, Driver driver, Restaurant restaurant,LocalDateTime pickupTime, LocalDateTime dropoffTime, ShoppingCart boughtItems) {
         double totalPrice = 0;
+        this.boughtItems = boughtItems;
+        if(boughtItems != null || boughtItems.getItems() != null)
         for(Payload payload : boughtItems.getItems()){
             double unitPrice = payload.getItem().getPrice();
             totalPrice+=unitPrice * payload.getQuantity();
         }
-        this.id = count + 1;
+        this.id =  id;
         setCount(count + 1);
         this.client = client;
         this.driver= driver;
@@ -35,7 +37,6 @@ public class Order {
         this.pickupTime = pickupTime;
         this.dropoffTime = dropoffTime;
         this.status = OrderStatus.COMPLETED;
-        this.boughtItems = boughtItems;
     }
 
     public Order() {
@@ -49,6 +50,8 @@ public class Order {
 
     public double calculatePrice(){
         double total = 0;
+        if(boughtItems == null || boughtItems.getItems() == null)
+            return 0;
         for(Payload p : boughtItems.getItems()){
             total+= p.getItem().getPrice() * p.getQuantity();
         }

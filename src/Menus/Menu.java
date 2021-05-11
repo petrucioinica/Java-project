@@ -25,6 +25,13 @@ public class Menu {
         this.restaurantId = restaurantId;
     }
 
+    public Menu(int id, ArrayList<Item> menuItems,int restaurantId) {
+        this.id = id;
+        setCount(count + 1);
+        this.menuItems = menuItems;
+        this.restaurantId = restaurantId;
+    }
+
     public int getRestaurantId() {
         return restaurantId;
     }

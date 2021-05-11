@@ -1,0 +1,4 @@
+id, email, first name, last name, orders, role, password, address, phone number
+1,a,a,a,0,CLIENT,a,a,a
+2,b,b,b,0,CLIENT,b,b,b
+5,Petru,petru,asda,0,CLIENT,43234,asdad,43243

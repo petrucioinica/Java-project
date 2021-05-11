@@ -122,7 +122,7 @@ public class CsvWritingService {
             }
             fw.append(restaurant.getId() + "," + restaurant.getEmail() + "," + restaurant.getFirstName() + "," + restaurant.getLastName() + "," +
                     restaurant.getOrders() + "," + restaurant.getRole() + "," + restaurant.getPassword() + "," + restaurant.getName() + "," +
-                    restaurant.getAddress() + "," + restaurant.getRating() + "\n"
+                    restaurant.getAddress() + "," + restaurant.getRating() + " \n"
             );
             fw.flush();
             fw.close();

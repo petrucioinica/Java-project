@@ -1,17 +1,12 @@
 package Services;
 
-import Menus.Item;
 import Orders.Order;
 import Orders.OrderStatus;
-import Orders.Payload;
 import Orders.ShoppingCart;
 import Users.*;
-import jdk.jshell.Snippet;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Scanner;
 
 public class OrdersService {
@@ -79,9 +74,16 @@ public class OrdersService {
         orders.add(o);
     }
 
-    public void getAllOrders(){
-        for(Order order : orders)
+    public void getAllOrders() {
+        for (Order order : orders)
             System.out.println(order.toString() + "\n");
+    }
+
+
+    public static void readOrders() {
+        ArrayList<Order> ro = CsvReadingService.readOrders();
+        orders = ro;
+        orders.forEach(order -> System.out.println(order.toString()));
     }
 
 }

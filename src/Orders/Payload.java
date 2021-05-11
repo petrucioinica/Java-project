@@ -18,6 +18,16 @@ public class Payload implements Comparable<Payload>{
 
     }
 
+
+    public Payload(int id, Item item, int quantity, int shoppingCartId) {
+        this.item = item;
+        this.quantity = quantity;
+        this.shoppingCartId = shoppingCartId;
+        this.id = id;
+        setCount(count + 1);
+
+    }
+
     public int getId() {
         return id;
     }
@@ -64,6 +74,16 @@ public class Payload implements Comparable<Payload>{
         if(this.item.getPrice() * this.quantity < p.item.getPrice() * p.quantity)
             return -1;
         return 0;
+    }
+
+    @Override
+    public String toString(){
+        final StringBuilder sb = new StringBuilder();
+        sb.append(id + "\n");
+        sb.append("item: " + item.getName() + "\n");
+        sb.append("quantity: " + quantity + "\n");
+        sb.append("Shopping cart id: " + shoppingCartId + "\n");
+        return sb.toString();
     }
 
 }

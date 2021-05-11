@@ -29,6 +29,13 @@ public class Driver extends User{
         this.rating = 5.00;
         this.carNumber = carNumber;
     }
+    public Driver(int id, int orders,String firstName, String lastName, Role role, String email, String password, double rating, String carNumber) {
+        super(id, orders,  firstName, lastName, role, email, password);
+        this.rating = rating;
+        this.carNumber = carNumber;
+
+    }
+
     @Override
     public String toString(){
         final StringBuilder sb = new StringBuilder();

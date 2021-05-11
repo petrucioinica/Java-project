@@ -19,6 +19,8 @@ public class Main {
         OrdersService ordersService = new OrdersService();
         ShoppingCartsService shoppingCartsService = new ShoppingCartsService();
         MenusService menusService = new MenusService();
+        UsersService.loadUsers();
+        OrdersService.readOrders();
 
 
         System.out.println("APP STARTED\nThe following commands are available:\n");
