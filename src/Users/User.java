@@ -104,6 +104,7 @@ public class User {
     @Override
     public String toString(){
         final StringBuilder sb = new StringBuilder();
+        sb.append(id + "\n");
         sb.append(this.email + "\n");
         sb.append(this.firstName + " " + this.lastName + "\n");
         sb.append(this.role + "\n");

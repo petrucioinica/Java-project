@@ -21,7 +21,7 @@ public class Restaurant extends User{
         }
 
         public Restaurant(int id, int orders, double rating, String firstName, String lastName, Role role, String email, String password, String name, String address, Menu menu) {
-                super(firstName, lastName, role, email, password);
+                super(id, orders, firstName, lastName, role, email, password);
                 this.name = name;
                 this.address = address;
                 this.rating =  rating;

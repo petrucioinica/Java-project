@@ -167,6 +167,7 @@ public class CsvReadingService {
         UsersService.getUsers().forEach(user -> {
             if(user.getId() == restId){
                 ref.set((Restaurant) user);
+
             }
         });
         return ref.get();
