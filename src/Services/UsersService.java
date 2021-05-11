@@ -58,8 +58,18 @@ public class UsersService {
         System.out.println("Address:");
         String address = input.nextLine();
         System.out.println("Menu items number:");
-        Menu m = MenusService.generateMenu(input.nextInt());
-        return new Restaurant(firstName, lastName, Role.RESTAURANT, email, password, name, address, m);
+        Restaurant r = new Restaurant();
+        Menu m = MenusService.generateMenu(input.nextInt(), r.getId());
+        r.setEmail(email);
+        r.setFirstName(firstName);
+        r.setLastName(lastName);
+        r.setPassword(password);
+        r.setName(name);
+        r.setAddress(address);
+        r.setMenu(m);
+        r.setRole(Role.RESTAURANT);
+        CsvWritingService.writeRestaurant(r);
+        return r;
     }
 
     public static ArrayList<User> getUsers() {
@@ -95,10 +105,12 @@ public class UsersService {
             switch (command) {
                 case 1:
                     Client c = generateClient();
+                    CsvWritingService.writeClient(c);
                     users.add(c);
                     break;
                 case 2:
                     Driver d = generateDriver();
+                    CsvWritingService.writeDriver(d);
                     users.add(d);
                     break;
                 case 3:

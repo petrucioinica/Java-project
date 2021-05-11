@@ -2,9 +2,11 @@ package Services;
 
 import Menus.Item;
 import Orders.Order;
+import Orders.OrderStatus;
 import Orders.Payload;
 import Orders.ShoppingCart;
 import Users.*;
+import jdk.jshell.Snippet;
 
 import java.lang.reflect.Array;
 import java.time.LocalDateTime;
@@ -60,11 +62,21 @@ public class OrdersService {
             i++;
         }
         order = input.nextInt();
+        Order o = new Order();
         Restaurant restaurant = (Restaurant) restaurants.get(order);
-        ShoppingCart shoppingCart = ShoppingCartsService.createShoppingCart(restaurant);
+        ShoppingCart shoppingCart = ShoppingCartsService.createShoppingCart(restaurant, o.getId());
         LocalDateTime dropoffTime = LocalDateTime.now();
         LocalDateTime pickupTime = LocalDateTime.parse(dropoffTime.toString()).minusMinutes(30);
-        orders.add(new Order(client, driver, restaurant, pickupTime, dropoffTime, shoppingCart));
+        o.setDriver(driver);
+        o.setClient(client);
+        o.setRestaurant(restaurant);
+        o.setPickupTime(pickupTime);
+        o.setDropoffTime(dropoffTime);
+        o.setBoughtItems(shoppingCart);
+        o.setStatus(OrderStatus.COMPLETED);
+        o.setOrderPrice(o.calculatePrice());
+        CsvWritingService.writeOrder(o);
+        orders.add(o);
     }
 
     public void getAllOrders(){

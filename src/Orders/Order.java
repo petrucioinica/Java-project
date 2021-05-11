@@ -47,6 +47,14 @@ public class Order {
 
     }
 
+    public double calculatePrice(){
+        double total = 0;
+        for(Payload p : boughtItems.getItems()){
+            total+= p.getItem().getPrice() * p.getQuantity();
+        }
+        return total;
+    }
+
     public ShoppingCart getBoughtItems() {
         return boughtItems;
     }

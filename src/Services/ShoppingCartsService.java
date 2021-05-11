@@ -11,11 +11,11 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 public class ShoppingCartsService {
-    public static ShoppingCart createShoppingCart(Restaurant restaurant){
+    public static ShoppingCart createShoppingCart(Restaurant restaurant, int orderId){
         int i;
         Scanner input = new Scanner(System.in);
         boolean isFinalized = false;
-        ShoppingCart shoppingCart = new ShoppingCart(new HashSet<>());
+        ShoppingCart shoppingCart = new ShoppingCart(new HashSet<>(), orderId);
         while (!isFinalized) {
             System.out.println("Restaurant menu is: ");
             i = 0;
@@ -30,9 +30,12 @@ public class ShoppingCartsService {
             else {
                 System.out.println("Please type in quantity of said item.");
                 int quantity = input.nextInt();
-                shoppingCart.addPayload(new Payload(restaurant.getMenu().getMenuItems().get(order), quantity));
+                Payload p = new Payload(restaurant.getMenu().getMenuItems().get(order), quantity, shoppingCart.getId());
+                CsvWritingService.writePayload(p);
+                shoppingCart.addPayload(p);
             }
         }
+        CsvWritingService.writeShoppingCart(shoppingCart);
         return shoppingCart;
     }
 
