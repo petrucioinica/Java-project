@@ -150,7 +150,7 @@ public class Order {
     public String toString(){
         final StringBuilder sb = new StringBuilder();
         sb.append(this.id + "\n");
-        sb.append("Restaurant: " + this.restaurant.getName() + "\n");
+        sb.append("Restaurant: " + restaurant.getName() + "\n");
         sb.append("Client: " + this.client.getFirstName() + " " + this.client.getLastName() + "\n");
         sb.append("Driver: " + this.driver.getFirstName() + " " + this.driver.getLastName() + "\n");
         sb.append("Pickup time: " + this.pickupTime.toString() + "\n");

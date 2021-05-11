@@ -1,3 +1,2 @@
 id, email, first name, last name, orders, role, password, name, address, rating
-2,email,first,second,0,RESTAURANT,asd,olivio,horezu,0.0
-6,some,asd,ss,0,RESTAURANT,4243,siva,asdsa,0.0 
+3,restaurant@mail.com,Giuseppe,Giusinni,0,RESTAURANT,mamamia,Trattoria Giuseppe,Little Italy, no. 4,0.0 
