@@ -19,13 +19,15 @@ public class Order {
     private OrderStatus status;
     private ShoppingCart boughtItems;
 
-    public Order(Client client, Driver driver, Restaurant restaurant,LocalDateTime pickupTime, LocalDateTime dropoffTime, ShoppingCart boughtItems) {
+    public Order(int id, Client client, Driver driver, Restaurant restaurant,LocalDateTime pickupTime, LocalDateTime dropoffTime, ShoppingCart boughtItems) {
         double totalPrice = 0;
+        this.boughtItems = boughtItems;
+        if(boughtItems != null || boughtItems.getItems() != null)
         for(Payload payload : boughtItems.getItems()){
             double unitPrice = payload.getItem().getPrice();
             totalPrice+=unitPrice * payload.getQuantity();
         }
-        this.id = count + 1;
+        this.id =  id;
         setCount(count + 1);
         this.client = client;
         this.driver= driver;
@@ -35,7 +37,6 @@ public class Order {
         this.pickupTime = pickupTime;
         this.dropoffTime = dropoffTime;
         this.status = OrderStatus.COMPLETED;
-        this.boughtItems = boughtItems;
     }
 
     public Order() {
@@ -45,6 +46,16 @@ public class Order {
         this.fee = 0;
 
 
+    }
+
+    public double calculatePrice(){
+        double total = 0;
+        if(boughtItems == null || boughtItems.getItems() == null)
+            return 0;
+        for(Payload p : boughtItems.getItems()){
+            total+= p.getItem().getPrice() * p.getQuantity();
+        }
+        return total;
     }
 
     public ShoppingCart getBoughtItems() {
@@ -139,7 +150,7 @@ public class Order {
     public String toString(){
         final StringBuilder sb = new StringBuilder();
         sb.append(this.id + "\n");
-        sb.append("Restaurant: " + this.restaurant.getName() + "\n");
+        sb.append("Restaurant: " + restaurant.getName() + "\n");
         sb.append("Client: " + this.client.getFirstName() + " " + this.client.getLastName() + "\n");
         sb.append("Driver: " + this.driver.getFirstName() + " " + this.driver.getLastName() + "\n");
         sb.append("Pickup time: " + this.pickupTime.toString() + "\n");

@@ -29,6 +29,13 @@ public class Client extends User{
         this.address = address;
         this.phoneNumber = phoneNumber;
     }
+
+    public Client( int id, int orders, String firstName, String lastName, Role role, String email, String password, String address, String phoneNumber) {
+        super(id, orders,firstName, lastName, role, email, password);
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
     @Override
     public String toString(){
         final StringBuilder sb = new StringBuilder();

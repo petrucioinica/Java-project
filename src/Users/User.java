@@ -27,6 +27,17 @@ public class User {
         this.password = password;
     }
 
+    public User(int id, int orders, String firstName, String lastName, Role role, String email, String password) {
+        this.id = id;
+        setCount(count+1);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.orders = orders;
+        this.role = role;
+        this.email = email;
+        this.password = password;
+    }
+
 
     public static void setCount(int count) {
         User.count = count;
@@ -93,6 +104,7 @@ public class User {
     @Override
     public String toString(){
         final StringBuilder sb = new StringBuilder();
+        sb.append(id + "\n");
         sb.append(this.email + "\n");
         sb.append(this.firstName + " " + this.lastName + "\n");
         sb.append(this.role + "\n");

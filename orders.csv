@@ -1,0 +1,2 @@
+id,client id, driver id, restaurant id, price, fee, pick up time, drop off time, status
+1,1,2,3,55.0,0.0,2021-05-11T22:40:02.678111800,2021-05-11T23:10:02.678111800,COMPLETED
