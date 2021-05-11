@@ -46,7 +46,7 @@ public class UsersService {
 
     public Restaurant generateRestaurant() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter the values you want for the added driver:\nEmail:");
+        System.out.println("Enter the values you want for the added restaurant:\nEmail:");
         String email = input.nextLine();
         System.out.println("First name:");
         String firstName = input.nextLine();

@@ -185,7 +185,7 @@ public class CsvReadingService {
     public static Driver readOrderDriver(int driverId) {
         final AtomicReference<Driver> ref = new AtomicReference<>();
         UsersService.getUsers().forEach(user -> {
-            if(user.getId() == driverId){
+            if(user.getId() == driverId && user.getRole() == Role.DRIVER){
                 ref.set((Driver) user);
             }
         });
