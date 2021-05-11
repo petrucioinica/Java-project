@@ -83,7 +83,6 @@ public class OrdersService {
     public static void readOrders() {
         ArrayList<Order> ro = CsvReadingService.readOrders();
         orders = ro;
-        orders.forEach(order -> System.out.println(order.toString()));
     }
 
 }
