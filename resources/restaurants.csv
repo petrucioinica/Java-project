@@ -1,0 +1,3 @@
+id, email, first name, last name, entities.orders, role, password, name, address, rating
+3,restaurant@mail.com,Giuseppe,Giusinni,0,RESTAURANT,mamamia,Trattoria Giuseppe,Little Italy no. 4,0.0
+4,rest@mail.com,Some,Name,0,RESTAURANT,534554354,Extrem foods,Extreeme street no. 420,0.0 
