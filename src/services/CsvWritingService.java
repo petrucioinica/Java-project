@@ -13,6 +13,19 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class CsvWritingService {
+    private static CsvWritingService INSTANCE = null;
+
+    private CsvWritingService(){
+
+    }
+
+    public static synchronized CsvWritingService getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new CsvWritingService();
+        }
+        return INSTANCE;
+    }
+
     public static void writeClient(Client user) {
         try {
             File csvFile = new File("./resources/clients.csv");

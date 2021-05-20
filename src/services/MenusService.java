@@ -9,6 +9,20 @@ import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class MenusService {
+    private static MenusService INSTANCE = null;
+
+    private MenusService(){
+
+    }
+
+    public static synchronized MenusService getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new MenusService();
+        }
+        return INSTANCE;
+    }
+
+
     public static Item generateItem(Menu m) {
         Scanner input = new Scanner(System.in);
         System.out.println("Item name: ");

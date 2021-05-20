@@ -10,11 +10,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        UsersService usersService = new UsersService();
-        OrdersService ordersService = new OrdersService();
-        ShoppingCartsService shoppingCartsService = new ShoppingCartsService();
-        MenusService menusService = new MenusService();
-        AuditService auditService = new AuditService();
+        UsersService usersService = UsersService.getInstance();
+        OrdersService ordersService = OrdersService.getInstance();
+        ShoppingCartsService shoppingCartsService = ShoppingCartsService.getInstance();
+        MenusService menusService = MenusService.getInstance();
+        AuditService auditService = AuditService.getInstance();
         UsersService.loadUsers();
         OrdersService.readOrders();
 
@@ -64,6 +64,7 @@ public class Main {
                     case 5:
                         AuditService.recordAction("Get all orders");
                         ordersService.getAllOrders();
+                        break;
                     case 6:
                         MenusService.getExtremeItem("expensive");
                         AuditService.recordAction("Get most expensive item");

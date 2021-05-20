@@ -1,2 +1,3 @@
 id, email, first name, last name, entities.orders, role, password, address, phone number
 1,customer@mail.com,John,Smith,0,CLIENT,sdfsdf,Some street no. 1,0000000000
+5,johndoe@mail.com,john,doe,0,CLIENT,214124,Seasame Street no. 5,342342342

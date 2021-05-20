@@ -11,7 +11,20 @@ import java.util.concurrent.atomic.AtomicReference;
 
 
 public class UsersService {
-    private static ArrayList<User> users = new ArrayList<>();
+    private static ArrayList<User> users;
+
+    private static UsersService INSTANCE = null;
+
+    private UsersService(){
+      users = new ArrayList<>();
+    }
+
+    public static synchronized UsersService getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new UsersService();
+        }
+        return INSTANCE;
+    }
 
     public Client generateClient() {
         Scanner input = new Scanner(System.in);

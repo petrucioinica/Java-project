@@ -13,8 +13,21 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class OrdersService {
+    private static ArrayList<Order> orders;
 
-    private static ArrayList<Order> orders = new ArrayList<>();
+    private static OrdersService INSTANCE = null;
+
+    private OrdersService(){
+        orders = new ArrayList<>();
+    }
+
+    public static synchronized OrdersService getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new OrdersService();
+        }
+        return INSTANCE;
+    }
+
 
     public void addOrder() {
         ArrayList<User> users = UsersService.getUsers();

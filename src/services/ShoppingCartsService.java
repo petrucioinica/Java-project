@@ -10,6 +10,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ShoppingCartsService {
+
+
+    private static ShoppingCartsService INSTANCE = null;
+
+    private ShoppingCartsService(){
+    }
+
+    public static synchronized ShoppingCartsService getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new ShoppingCartsService();
+        }
+        return INSTANCE;
+    }
     public static ShoppingCart createShoppingCart(Restaurant restaurant, int orderId){
         int i;
         Scanner input = new Scanner(System.in);

@@ -14,6 +14,19 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class CsvReadingService {
+    private static CsvReadingService INSTANCE = null;
+
+    private CsvReadingService(){
+
+    }
+
+    public static synchronized CsvReadingService getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new CsvReadingService();
+        }
+        return INSTANCE;
+    }
+
     public static ArrayList<Client> readClients() {
         try {
             ArrayList<Client> clientsList = new ArrayList<>();
